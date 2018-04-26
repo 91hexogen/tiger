@@ -1,0 +1,99 @@
+$( document ).ready(function() {
+
+
+    // Label ausblenden
+   Chart.defaults.global.legend.display = false;
+   // Font colors
+   Chart.defaults.global.defaultFontColor = '#000';
+
+
+  var chart_labels = ['USA', 'Germany', 'United Kingdom', 'France', 'Italy', 'Spain'];
+  var push_dataset = ['11', '9', '4', '2', '2', '1'];
+  var ctx = document.getElementById("forecast").getContext('2d');
+  var config = {
+      type: 'horizontalBar',
+      data: {
+          labels: chart_labels,
+          datasets: [{
+              label: "Pushes",
+              data: push_dataset,
+              backgroundColor: [
+                'rgba(243, 183, 1, 0.9)',
+                'rgba(243, 183, 1, 0.8)',
+                'rgba(243, 183, 1, 0.7)',
+                'rgba(243, 183, 1, 0.6)',
+                'rgba(243, 183, 1, 0.5)',
+                'rgba(243, 183, 1, 0.4)'
+              ]
+          }]
+      },
+      options: {
+        title: {
+              display: true,
+              text: '',
+              fontSize: 16
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                // font styling
+                  beginAtZero: true,
+                  //Zahlen
+                  fontSize: 16
+                }
+            }],
+            yAxes: [{
+              ticks: {
+                //APPNAMEN usw.
+                  fontSize: 18
+                }
+            }]
+        }
+    }
+  };
+  // past 24 hours
+  var forecast_chart = new Chart(ctx, config);
+  $("#0").click(function toggle() {
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // past week
+  $("#1").click(function toggle() {
+      var chart_labels = ['USA', 'Germany', 'Spain', 'France', 'United Kingdom', 'Italy'];
+      var push_dataset = ['78', '61', '54', '51', '43', '36'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // past month
+  $("#2").click(function() {
+      var chart_labels = ['USA', 'Germany', 'Spain', 'France', 'United Kingdom', 'Italy'];
+      var push_dataset = ['2445', '2325', '2268', '2232', '2121', '1879'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // past year
+  $("#3").click(function() {
+      var chart_labels = ['USA', 'Germany', 'United Kingdom', 'France', 'Spain', 'Italy'];
+      var push_dataset = ['23245', '21125', '17018', '15732', '12241', '10914'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // all time
+  $("#4").click(function() {
+      var chart_labels = ['USA', 'Germany', 'United Kingdom', 'Spain', 'France', 'Italy'];
+      var push_dataset = ['72245', '62425', '58118', '41232', '34241', '30314'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  });
+
+});  

@@ -1,0 +1,174 @@
+
+/* BOOTSTRAP BOX-SIZING */
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  background-color: grey;
+}
+
+
+/* ######### NAVBAR ######### */
+
+nav {
+  background-color: #292b2c;
+}
+
+
+/* ######### MAIN DIVS ######### */
+
+
+overflow: hidden;
+}
+
+.text-center {
+text-align: center!important;
+}
+
+
+div {
+display: block;
+}
+
+.img-fluid {
+max-width: 100%;
+height: auto;
+border-radius: 21px 21px 0 0;
+}
+
+@media all and (max-width:30em){
+ a.py-2{
+  display:block;
+  margin:0.4em auto;
+ }
+}
+
+/* Ticker Inhalt */
+
+.ticker-container {
+	width: 100%;
+	overflow: hidden;
+  margin: 0 auto;
+}
+.ticker-text {
+	height: 150%;
+  color: #fafafa;
+  white-space:nowrap;
+  display:inline-block;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+.Email {
+		box-sizing: border-box;
+		border-radius: 5px;
+		padding: 5px;
+		width: 500px;
+		max-width: 90%;
+		max-height: 100px;
+		overflow: hidden;
+		margin: 3px auto;
+		transition: all .3s;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+.Email .ImgWrapper {
+		width: 20%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+.EmailTitle {
+		width: 80%;
+		position: relative;
+		color: #fff;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+.EmailTitle h1 {
+		margin: 0px;
+		padding: 0px;
+		font-size: 15px;
+		line-height: 1em;
+		font-weight: 500;
+		width: 100%;
+	}
+
+.EmailTitle h2 {
+		margin: 0px;
+		padding: 3px 0px;
+		font-size: 12px;
+		line-height: 1em;
+		font-weight: 300;
+	}
+
+  .EmailTitle .EmailTime {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		font-size: 12px;
+		font-weight: 100;
+		margin: 0px;
+		padding: 5px;
+	}
+
+.EmailTitle p.EmailPreview {
+		margin: 5px 0px;
+		max-height: 25px;
+		padding: 0px;
+		font-size: 12px;
+		font-weight: 100;
+		opacity: .8;
+		overflow: hidden;
+		transition: all .3s;
+	}
+
+.Email.active .EmailTitle p.EmailPreview {
+		max-height: 0px;
+	}
+
+/* ######### FOOTER ######### */
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  color: #EEE;
+}
+
+strong{
+  color: #f39200; /*Konsole Orange*/
+  text-decoration: none;
+}
+
+
+/* ######### RESPONSIVE CSS ######### */
+
+
+*, ::after, ::before {
+box-sizing: border-box;
+}
+user agent stylesheet

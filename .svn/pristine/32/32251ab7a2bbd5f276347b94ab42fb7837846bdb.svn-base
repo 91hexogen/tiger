@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>KPUSH.overview.2018</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen" />
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+<!-- ###################################### NAVBAR ###################################### -->
+
+<nav class="site-header sticky-top py-1 bg-secondary">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <!-- <img class="float-left" src="" alt="konsole-labs" width="15%;" height="10%;"></img> -->
+    <a class="py-2 d-none d-md-inline-block text-light" href="index.html">Home</a>
+    <a class="py-2 d-none d-md-inline-block text-light" href=""></a>
+    <a class="py-2 d-none d-md-inline-block text-light" href="push-ranking.html">Push ranking</a>
+    <a class="py-2 d-none d-md-inline-block text-light" href="country-ranking.html">Country ranking</a>
+    <a class="py-2 d-none d-md-inline-block text-light" href="correction-ranking.html">Most corrections</a>
+    <a class="py-2 d-none d-md-inline-block text-light" href="customer-ranking.html">Our customers</a>
+    <a class="py-2 d-none d-md-inline-block text-light" href="pushed-topics.html">Pushed topics</a>
+  </div>
+</nav>
+
+<h3>BOOM MOTHERFUCKER</h3>
+
+<!-- ###################################### HEADER ###################################### -->
+<div class="bg-light overflow-hidden p-3 p-md-5 m-md-3 text-center bg-secondary">
+  <div class="col-md-5 xl-3 mx-auto my-5">
+    <h3 class="display-4 font-weight-small">PUSH.NOTIFICATION.<span class="text-warning">MONITORING</span></h3>
+    <p class="lead font-weight-normal">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
+  </div>
+</div>
+
+
+
+<!-- ###################################### TICKER ###################################### -->
+<!-- ### Ticker ### -->
+<div class="ticker-container bg-warning p-3 text-dark">
+<div class="ticker-text text-warning">
+
+  <!-- ### Ticker Inhalt ### -->
+  <div class="Email bg-dark">
+    <div class="ImgWrapper">
+      <img src="img/Logo_BILD.svg" class="img-fluid" alt="Responsive image" style="border-radius: 0%; width:50px; height:50px;">
+    </div>
+
+    <div class="EmailTitle text-light">
+      <p class="EmailTime">8:13 AM</p>
+      <h1 class="text-warning">BILD</h1>
+      <h2>BREAKING NEWS</h2>
+      <p class="EmailPreview">Deutschland ist wieder Weltmeister!</p>
+    </div>
+  </div>
+
+</div>
+</div> <!-- Ticker end -->
+
+
+
+<!-- ###################################### ROW 1 ###################################### -->
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+
+  <div class="bg-secondary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-light overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5 font-weight-normal">Push ranking</h2>
+      <p class="lead">Welche Apps pushen am meisten?</p>
+      <a class="btn btn-outline-light" href="push-ranking.html">View data</a>
+    </div>
+  </div>
+
+  <div class="bg-secondary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-light overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5 font-weight-normal">Country ranking</h2>
+      <p class="lead">Aus welchen Ländern wird gepushed?</p>
+      <a class="btn btn-outline-light" href="country-ranking.html">View data</a>
+    </div>
+  </div>
+
+  <div class="bg-secondary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-light overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5 font-weight-normal">Our customers</h2>
+      <p class="lead">Welche Kunden pushen am meisten?</p>
+      <a class="btn btn-outline-light" href="customer-ranking.html">View data</a>
+    </div>
+  </div>
+
+</div><!-- end row 1 -->
+
+
+
+<!-- ###################################### ROW 2 ###################################### -->
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+
+  <div class="bg-secondary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-light overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5 font-weight-normal">Correction ranking</h2>
+      <p class="lead">Wer korrigiert am meisten?</p>
+      <a class="btn btn-outline-light" href="correction-ranking.html">View data</a>
+    </div>
+  </div>
+
+  <div class="bg-secondary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-light overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5 font-weight-normal">Pushed topics</h2>
+      <p class="lead">Welche Themen werden häufig gepushed?</p>
+      <a class="btn btn-outline-light" href="pushed-topics.html">View data</a>
+    </div>
+  </div>
+
+  <div class="bg-secondary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-light overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5 font-weight-normal">Lore Ipsum</h2>
+      <p class="lead">Lore Ipsum lore ipsum.</p>
+      <a class="btn btn-outline-light">View data</a>
+    </div>
+  </div>
+
+</div><!-- end row 2 -->
+
+
+
+
+<!-- ###################################### FOOTER ###################################### -->
+<div class="footer bg-dark">Copyright &#169; 2018. All Rights Reserved. |
+<a href="http://www.konsole-labs.com"><strong>konsole-labs.com</strong></a></div>
+
+
+
+<!-- ###################################### END OF CONTENT ###################################### -->
+
+
+
+<!-- ###################################### SCRIPT ###################################### -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/vendor/holder.min.js"></script>
+
+<!-- ### TICKER ### -->
+<script>
+var width = $('.ticker-text').width(),
+    containerwidth = $('.ticker-container').width(),
+    left = containerwidth;
+$(document).ready(function(e){
+  function tick() {
+        if(--left < -width){
+            left = containerwidth;
+        }
+        $(".ticker-text").css("margin-left", left + "px");
+        setTimeout(tick, 7);
+      }
+      tick();
+})
+</script>
+
+
+
+
+</body>
+</html>

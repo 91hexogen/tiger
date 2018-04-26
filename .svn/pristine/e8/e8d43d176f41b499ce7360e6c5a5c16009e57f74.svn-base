@@ -1,0 +1,115 @@
+$( document ).ready(function() {
+
+   // Label ausblenden
+   Chart.defaults.global.legend.display = false;
+   // Font colors
+   Chart.defaults.global.defaultFontColor = '#000';
+   /*// Werte hinter den Bars
+   Chart.pluginService.register({
+      afterDraw: function(chartInstance) {
+          var ctx = chartInstance.chart.ctx;
+
+          // render the value of the chart above the bar
+          ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, '16px', Chart.defaults.global.defaultFontFamily);
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+
+          chartInstance.data.datasets.forEach(function (dataset) {
+              for (var i = 0; i < dataset.data.length; i++) {
+                  var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                  ctx.fillText(dataset.data[i], model.x, model.y - 2);
+              }
+          });
+    }
+  });*/
+
+  var chart_labels = ['BILD', 'FOCUS', 'Stern', 'El Pais', 'LA Times', 'BBC News'];
+  var push_dataset = ['4', '2', '2', '1', '1', '1'];
+  var ctx = document.getElementById("forecast").getContext('2d');
+  var config = {
+      type: 'horizontalBar',
+      data: {
+          labels: chart_labels,
+          datasets: [{
+              label: "Pushes",
+              data: push_dataset,
+              backgroundColor: [
+                'rgba(243, 183, 1, 0.9)',
+                'rgba(243, 183, 1, 0.8)',
+                'rgba(243, 183, 1, 0.7)',
+                'rgba(243, 183, 1, 0.6)',
+                'rgba(243, 183, 1, 0.5)',
+                'rgba(243, 183, 1, 0.4)'
+              ]
+          }]
+      },
+      options: {
+        title: {
+              display: true,
+              text: '',
+              fontSize: 16
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                // font styling
+                  beginAtZero: true,
+                  // ZAHLEN
+                  fontSize: 16
+                }
+            }],
+            yAxes: [{
+              ticks: {
+                // APPNAMEN usw.
+                  fontSize: 18
+                }
+            }]
+        }
+    }
+  };
+  // past 24 hours
+  var forecast_chart = new Chart(ctx, config);
+  $("#0").click(function() {
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // past week
+  $("#1").click(function() {
+      var chart_labels = ['BILD', 'Stern', 'FOCUS', 'El Pais', 'BBC News', 'LA Times'];
+      var push_dataset = ['21', '15', '12', '5', '3', '2'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // past month
+  $("#2").click(function() {
+      var chart_labels = ['BILD', 'Stern', 'FOCUS', 'El Pais', 'BBC News', 'LA Times'];
+      var push_dataset = ['76', '58', '32', '12', '7', '4'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // past year
+  $("#3").click(function() {
+      var chart_labels = ['BILD', 'Stern', 'FOCUS', 'BBC News', 'LA Times', 'El Pais'];
+      var push_dataset = ['703', '523', '218', '157', '41', '28'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  })
+  // all time
+  $("#4").click(function() {
+      var chart_labels = ['BILD', 'Stern', 'FOCUS', 'BBC News', 'LA Times', 'El Pais'];
+      var push_dataset = ['2933', '1853', '844', '674', '241', '131'];
+      var data = forecast_chart.config.data;
+      data.datasets[0].data = push_dataset;
+      data.labels = chart_labels;
+      forecast_chart.update();
+  });
+
+});

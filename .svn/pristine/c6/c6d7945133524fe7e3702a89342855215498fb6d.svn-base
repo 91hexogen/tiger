@@ -1,0 +1,54 @@
+
+Befehle für WORLDWIDE:
+
+past 24 hours:
+SELECT appName, count(*) AS number FROM Notification WHERE postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 24 HOUR) GROUP BY appName ORDER BY `number` DESC
+
+past week:
+SELECT appName, count(*) AS number FROM Notification WHERE postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 7 DAY) GROUP BY appName ORDER BY `number` DESC
+
+past: month
+SELECT appName, count(*) AS number FROM Notification WHERE postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 MONTH) GROUP BY appName ORDER BY `number` DESC
+
+past year:
+SELECT appName, count(*) AS number FROM Notification WHERE postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 YEAR) GROUP BY appName ORDER BY `number` DESC
+
+all time:
+SELECT appName, count(*) AS number FROM Notification GROUP BY appName ORDER BY `number` DESC
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Befehle für COUNTRYS:
+
+past 24 hours:
+SELECT appNamePackage, COUNT(*) AS number FROM Notification WHERE (postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 24 HOUR)) AND (appNamePackage LIKE 'de%')
+UNION ALL
+SELECT appNamePackage, COUNT(*) AS number FROM Notification WHERE (postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 24 HOUR)) AND (appNamePackage LIKE 'com%')
+
+USW.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Befehle für CUSTOMERS:
+
+past 24 hours:
+SELECT appName, COUNT(*) AS number FROM Notification WHERE (postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 24 HOUR)) AND (appName LIKE 'SWR Aktuell')
+UNION ALL
+SELECT appName, COUNT(*) AS number FROM Notification WHERE (postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 24 HOUR)) AND (appName LIKE 'Inforadio')
+UNION ALL
+SELECT appName, COUNT(*) AS number FROM Notification WHERE (postTime / 1000 >= UNIX_TIMESTAMP(NOW() - INTERVAL 24 HOUR)) AND (appName LIKE 'Fritz') ORDER BY `number` DESC
+
+USW.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Befehle für CORRECTIONS:
+
+past 24 hours:
+
+SELECT appName, COUNT(nMessage) AS corrections FROM Notification GROUP BY appName HAVING COUNT(nMessage) > 1 ORDER BY COUNT(nMessage) DESC
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

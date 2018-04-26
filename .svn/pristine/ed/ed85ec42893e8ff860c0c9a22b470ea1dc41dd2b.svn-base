@@ -1,0 +1,804 @@
+<?php // MYSQL anbinden für Ticker
+error_reporting(E_ALL);
+$connect = mysqli_connect("localhost", "root", "root", "notificationData");
+// Check connection
+// if (!$connect) {
+//  die("Connection failed: " . mysqli_connect_error());
+// }
+// echo "Connected successfully";
+$query1 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE '1A Webradio'";
+$query2 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE '20 Minuten'";
+$query3 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE 'Abendschau'";
+$query4 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE 'Antenne Bayern'";
+$query5 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE 'Antenne Brandenburg'";
+$query6 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE 'AOL'";
+$query7 = "SELECT count(*) AS number FROM Notification WHERE appName LIKE 'ARDBuffet'";
+
+
+
+$result1 = mysqli_query($connect, $query);
+$result2 = mysqli_query($connect, $query2);
+$result3 = mysqli_query($connect, $query3);
+$result4 = mysqli_query($connect, $query4);
+$result5 = mysqli_query($connect, $query5);
+$result6 = mysqli_query($connect, $query6);
+$result7 = mysqli_query($connect, $query7);
+
+?>
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>KPUSH.overview.2018</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen" />
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!-- ################### NAVBAR ################### -->
+
+<nav class="site-header sticky-top py-1 bg-dark">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <!-- <img class="float-left" src="" alt="konsole-labs" width="15%;" height="10%;"></img> -->
+    <a class="py-2 d-none d-md-inline-block" href="index.php">Home</a>
+    <a class="py-2 d-none d-md-inline-block" href=""></a>
+    <a class="py-2 d-none d-md-inline-block" href="worldwide.html">WORLDWIDE</a>
+    <a class="py-2 d-none d-md-inline-block" href="countrys.html">COUNTRYS</a>
+    <a class="py-2 d-none d-md-inline-block" href="enriched.html">ENRICHED</a>
+    <a class="py-2 d-none d-md-inline-block" href="corrections.html">CORRECTIONS</a>
+    <a class="py-2 d-none d-md-inline-block" href="customers.html">CUSTOMERS</a>
+    <a class="py-2 d-none d-md-inline-block" href="apps.php">APPS</a>
+  </div>
+</nav>
+
+
+<!-- ################### HEADER ################### -->
+<div class="bg-light overflow-hidden p-3 p-md-5 m-md-3 text-center">
+  <div class="col-md-7 xl-3 mx-auto my-5">
+    <h3 class="headtitle display-3 font-weight-bold">PUSH NOTIFICATION MONITORING</h3>
+  </div>
+</div> <!-- Header end -->
+
+
+
+<!-- ################### MAIN ROW ################### -->
+<div class="d-md-flex flex-md-equal w-100 my-md-2">
+
+
+<!-- ################### App List Column ################### -->
+<div class="ex1 main col p-3 p-md-1-5 m-md-3 text-info">
+    <h2 class="display-5 font-weight-normal text-warning">Overview</h2>
+    <p class="lead font-weight-small">Complete list of all monitored apps. Choose an App to view further details.</p>
+    <form>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+    </form>
+
+
+    <table>
+
+      <tr> <!-- *************** A *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">0-9</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#1awebradio" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" data-placement="bottom" data-offset="90" title="1A Webradio"><img src="img/applogos/1Awebradio.png"></a>
+          <a class="logo" data-toggle="collapse" href="#20minuten" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" data-placement="bottom" data-offset="90" title="20 Minuten"><img src="img/applogos/20Minuten.png"></a>
+        </td>
+      </tr>
+
+      <tr> <!-- *************** A *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">A</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#abendschau" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Abendschau"><img src="img/applogos/Abendschau.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#antennebayern" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Antenne Bayern"><img src="img/applogos/Antenne_Bayern.png"></a>
+          <a class="logo"data-toggle="collapse" href="#antennebrandenburg" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Antenne Brandenburg"><img src="img/applogos/Antenne_Brandenburg.png"></a>
+          <a class="logo"data-toggle="collapse" href="#aol" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="AOL"><img src="img/applogos/aol.png"></a>
+          <a class="logo"data-toggle="collapse" href="#ardbuffet" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="ARD Buffet"><img src="img/applogos/ard_buffet.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** B *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">B</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#bbcnews" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="BBC NEWS"><img src="img/applogos/bbc_news.png"></a>
+          <a class="logo"data-toggle="collapse" href="#bbradio" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="BB Radio"><img src="img/applogos/bbradio.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#bild" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="BILD"><img src="img/applogos/Logo_BILD.svg"></a>
+          <a class="logo"data-toggle="collapse" href="#boerseard" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="BoerseARD"><img src="img/applogos/boerseARD.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#brandenburgaktuell" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Brandenburg Aktuell"><img src="img/applogos/brandeburg_aktuell.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#bundle" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="bundle"><img src="img/applogos/bundle.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** C *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">C</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#charivari" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="1A Webradio"><img src="img/applogos/charivari.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#cnn" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="1A Webradio"><img src="img/applogos/cnn.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** D *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">D</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Daily Mail Online"><img src="img/applogos/dailymailonline.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="DAS DING"><img src="img/applogos/DASDING.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Der Westen"><img src="img/applogos/derwesten.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Deutsche Welle"><img src="img/applogos/deutsche_welle.gif"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** E *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">E</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="EL PAIS"><img src="img/applogos/elpais.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="ESPN"><img src="img/applogos/espn.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** F *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">F</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="FAZ - Der Tag"><img src="img/applogos/faz_der_tag.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="FAZ.NET"><img src="img/applogos/faznet.jpeg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Financial Times"><img src="img/applogos/financial_times.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="FOCUS Online"><img src="img/applogos/focus_online.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Fox News"><img src="img/applogos/foxnews.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="franceinfo"><img src="img/applogos/franceinfo.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Fritz"><img src="img/applogos/fritz.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** G *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">G</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio Gong"><img src="img/applogos/radio_gong_97.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Guardian"><img src="img/applogos/guardian.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** H *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">H</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Hitradio N1"><img src="img/applogos/hitradio_n1.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Hitradio OHR"><img src="img/applogos/hitradio_ohr.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="HR Info"><img src="img/applogos/hr_info.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="hr2 kultur"><img src="img/applogos/hr2_kultur.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="hr3"><img src="img/applogos/hr3.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Huffington Post"><img src="img/applogos/huffpost.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** I *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">I</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Inforadio"><img src="img/applogos/inforadio.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** K *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">K</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="KaffeeOderTee"><img src="img/applogos/kaffeeodertee.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Kochblogradio"><img src="img/applogos/kochblogradio.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Kulturradio"><img src="img/applogos/kulturradio.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** L *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">L</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="LA Times"><img src="img/applogos/latimes.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="LE FIGARO"><img src="img/applogos/le_figaro.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** M *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">M</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Mirror"><img src="img/applogos/mirror.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** N *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">N</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="NBC News"><img src="img/applogos/nbcnews.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="NDR HH"><img src="img/applogos/ndr_hh.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="NDR NDS"><img src="img/applogos/ndr_nds.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="News Republic"><img src="img/applogos/newsrepublic.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Newsstand"><img src="img/applogos/newsstand.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="NOS"><img src="img/applogos/nos.jpeg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="ntv"><img src="img/applogos/ntv.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="NY Times"><img src="img/applogos/nytimes.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** O *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">O</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="ORF.at News"><img src="img/applogos/orf.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** P *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">P</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Pirate Gong"><img src="img/applogos/pirate_gong.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Presseportal"><img src="img/applogos/presseportal.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** Q *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">Q</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Quartz"><img src="img/applogos/quartz.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** R *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">R</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio Berlin"><img src="img/applogos/radioberlin.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio Eins"><img src="img/applogos/radioeins.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio F"><img src="img/applogos/radio_f.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio Gong"><img src="img/applogos/radio_gong.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="RAI News"><img src="img/applogos/rai.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio Paloma"><img src="img/applogos/radio_paloma.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio SAW"><img src="img/applogos/radio_saw.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Radio Teddy"><img src="img/applogos/radio_teddy.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="rbb24"><img src="img/applogos/rbb24.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="RESI"><img src="img/applogos/resi.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Retro FM"><img src="img/applogos/retro.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="RIA Novosti"><img src="img/applogos/ria.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Rockland"><img src="img/applogos/rockland.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="RT News"><img src="img/applogos/rtnews.jpg"></a>
+
+        </td>
+      </tr>
+
+      <tr><!-- *************** S *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">S</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SCHWARZWALDRADIO"><img src="img/applogos/schwarzwaldradio.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Sky News"><img src="img/applogos/skynews.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Smart News"><img src="img/applogos/smart_news.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Spiegel Online"><img src="img/applogos/spiegel_online.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Squid"><img src="img/applogos/squid.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Stern"><img src="img/applogos/stern.png"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SWR1 RP"><img src="img/applogos/swr1_rp.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SWR1 BW"><img src="img/applogos/swr1_bw.png"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SWR3"><img src="img/applogos/swr3.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SWR4"><img src="img/applogos/swr4.png"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SWR Aktuell"><img src="img/applogos/swr_aktuell.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="SZ"><img src="img/applogos/sz.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** T *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">T</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Tagesschau"><img src="img/applogos/tagesschau.png"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Tagesspiegel"><img src="img/applogos/tagesspiegel.jpg"></a>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="The Times"><img src="img/applogos/thetimes.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** U *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">U</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="USA TODAY"><img src="img/applogos/usatoday.jpg"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** W *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">W</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Washington Post"><img src="img/applogos/washpost.jpeg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="watson"><img src="img/applogos/watson.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="WELT Edition"><img src="img/applogos/welt_edition.png"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="WELT News"><img src="img/applogos/welt_news.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="Wall Street Journal"><img src="img/applogos/wsj.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** Y *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">Y</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="YOU FM"><img src="img/applogos/youfm.png"></a>
+        </td>
+      </tr>
+
+      <tr><!-- *************** Z *************** -->
+        <th class="display-5 font-weight-normal text-warning" style="font-size: 24px;">Z</th>
+      </tr>
+      <tr>
+        <td>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="ZDF Heute"><img src="img/applogos/zdfheute.jpg"></a>
+          <a class="logo"data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-toggle="tooltip" title="ZEIT Online"><img src="img/applogos/zeitonline.jpg"></a>
+        </td>
+      </tr>
+
+    </table>
+
+  </div> <!-- Title Column end -->
+
+
+
+<!-- ################### List Column ################### -->
+<div class="col-md-6 p-3 p-md-1-5 m-md-3 bg-light text-dark" id="main">
+
+<!-- 1A Webradio Collapse -->
+    <div class="collapse" id="1awebradio">
+          <div class="bg-dark card card-body">
+            <div class="row">
+              <div class="col">
+                  <p class="appheader display-4 text-info font-weight-bold">1A Webradio</p><p class="text-warning">Konsole Labs Customer</p>
+                  <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                  <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                  <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result1)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+              </div>
+            <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/1Awebradio.png" alt="germany"/></div></div>
+            <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+            <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 20 Minuten Collapse -->
+        <div class="collapse" id="20minuten">
+              <div class="bg-dark card card-body">
+                <div class="row">
+                  <div class="col">
+                      <p class="appheader display-4 text-info font-weight-bold">20 Minuten</p><p class="text-warning"></p>
+                      <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                      <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                      <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result2)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                  </div>
+                <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/20minuten.png" alt="germany"/></div></div>
+                <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/switzerland.png" alt="switzerland"/></div></div>
+                <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Abendschau Collapse -->
+            <div class="collapse" id="abendschau">
+                  <div class="bg-dark card card-body">
+                    <div class="row">
+                      <div class="col">
+                          <p class="appheader display-4 text-info font-weight-bold">Abendschau</p><p class="text-warning"></p>
+                          <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                          <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                          <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result3)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                      </div>
+                    <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/Abendschau.jpg" alt="germany"/></div></div>
+                    <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                    <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Antenne Bayern Collapse -->
+                <div class="collapse" id="antennebrandenburg">
+                      <div class="bg-dark card card-body">
+                        <div class="row">
+                          <div class="col">
+                              <p class="appheader display-4 text-info font-weight-bold">Antenne Brandenburg</p><p class="text-warning"></p>
+                              <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                              <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                              <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result4)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                          </div>
+                        <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/Antenne_Bayern.png" alt="germany"/></div></div>
+                        <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                        <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Antenne Brandenburg Collapse -->
+                    <div class="collapse" id="antennebayern">
+                          <div class="bg-dark card card-body">
+                            <div class="row">
+                              <div class="col">
+                                  <p class="appheader display-4 text-info font-weight-bold">Antenne Bayern</p><p class="text-warning"></p>
+                                  <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                                  <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                  <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result5)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                              </div>
+                            <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/Antenne_Branenburg.png" alt="germany"/></div></div>
+                            <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                            <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- AOL Collapse -->
+                        <div class="collapse" id="aol">
+                              <div class="bg-dark card card-body">
+                                <div class="row">
+                                  <div class="col">
+                                      <p class="appheader display-4 text-info font-weight-bold">AOL</p><p class="text-warning"></p>
+                                      <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                      <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                      <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result6)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                  </div>
+                                <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/aol.png" alt="germany"/></div></div>
+                                <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- ARD Buffet Collapse -->
+                            <div class="collapse" id="ardbuffet">
+                                  <div class="bg-dark card card-body">
+                                    <div class="row">
+                                      <div class="col">
+                                          <p class="appheader display-4 text-info font-weight-bold">ARD Buffet</p><p class="text-warning"></p>
+                                          <p class="xf text-light">Category:<span class="text-warning"> Lifestyle App</span></p>
+                                          <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                          <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result7)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                      </div>
+                                    <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/ard_buffet.jpg" alt="germany"/></div></div>
+                                    <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                    <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- BBC News Collapse -->
+                                <div class="collapse" id="bbcnews">
+                                      <div class="bg-dark card card-body">
+                                        <div class="row">
+                                          <div class="col">
+                                              <p class="appheader display-4 text-info font-weight-bold">BBC News</p><p class="text-warning"></p>
+                                              <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                              <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                              <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result8)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                          </div>
+                                        <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/bbc_news.png" alt="germany"/></div></div>
+                                        <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/uk.png" alt="uk"/></div></div>
+                                        <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- BB Radio Collapse -->
+                                    <div class="collapse" id="bbradio">
+                                          <div class="bg-dark card card-body">
+                                            <div class="row">
+                                              <div class="col">
+                                                  <p class="appheader display-4 text-info font-weight-bold">BB Radio</p><p class="text-warning"></p>
+                                                  <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                                  <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                  <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result9)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                              </div>
+                                            <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/bbradio.jpg" alt="germany"/></div></div>
+                                            <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                            <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- BILD Collapse -->
+                                        <div class="collapse" id="bild">
+                                              <div class="bg-dark card card-body">
+                                                <div class="row">
+                                                  <div class="col">
+                                                      <p class="appheader display-4 text-info font-weight-bold">BILD</p><p class="text-warning"></p>
+                                                      <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                                      <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                      <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result10)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                  </div>
+                                                <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/Logo_BILD.svg" alt="germany"/></div></div>
+                                                <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                                <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- boerse ARD Collapse -->
+                                            <div class="collapse" id="boerseard">
+                                                  <div class="bg-dark card card-body">
+                                                    <div class="row">
+                                                      <div class="col">
+                                                          <p class="appheader display-4 text-info font-weight-bold">boerse ARD</p><p class="text-warning"></p>
+                                                          <p class="xf text-light">Category:<span class="text-warning"> Stock Market App</span></p>
+                                                          <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                          <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result11)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                      </div>
+                                                    <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/boerseARD.jpg" alt="germany"/></div></div>
+                                                    <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                                    <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <!-- brandeburg_aktuell Collapse -->
+                                                <div class="collapse" id="brandenburgaktuell">
+                                                      <div class="bg-dark card card-body">
+                                                        <div class="row">
+                                                          <div class="col">
+                                                              <p class="appheader display-4 text-info font-weight-bold">Brandenburg Aktuell</p><p class="text-warning"></p>
+                                                              <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                                              <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                              <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result12)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                          </div>
+                                                        <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/brandenburg_aktuell.jpg" alt="bra_aktuell"/></div></div>
+                                                        <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                                        <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <!-- bundle Collapse -->
+                                                    <div class="collapse" id="bundle">
+                                                          <div class="bg-dark card card-body">
+                                                            <div class="row">
+                                                              <div class="col">
+                                                                  <p class="appheader display-4 text-info font-weight-bold">bundle</p><p class="text-warning"></p>
+                                                                  <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                                                  <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                                  <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result13)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                              </div>
+                                                            <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/bundle.jpg" alt="bundle"/></div></div>
+                                                            <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                                            <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                        </div>
+                                                      </div>
+                                                    </div>
+
+                                                    <!-- charivari Collapse -->
+                                                        <div class="collapse" id="bundle">
+                                                              <div class="bg-dark card card-body">
+                                                                <div class="row">
+                                                                  <div class="col">
+                                                                      <p class="appheader display-4 text-info font-weight-bold">Chari Vari 98.6</p><p class="text-warning"></p>
+                                                                      <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                                                                      <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                                      <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result14)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                                  </div>
+                                                                <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/charivari.jpg" alt="charivari"/></div></div>
+                                                                <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="germany"/></div></div>
+                                                                <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                            </div>
+                                                          </div>
+                                                        </div>
+
+                                                        <!-- cnn Collapse -->
+                                                            <div class="collapse" id="bundle">
+                                                                  <div class="bg-dark card card-body">
+                                                                    <div class="row">
+                                                                      <div class="col">
+                                                                          <p class="appheader display-4 text-info font-weight-bold">CNN</p><p class="text-warning"></p>
+                                                                          <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                                                                          <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                                          <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result14)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                                          <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                                      </div>
+                                                                    <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/cnn.png" alt="cnn"/></div></div>
+                                                                    <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/usa.png" alt="usa"/></div></div>
+                                                                    <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                                </div>
+                                                              </div>
+                                                            </div>
+
+                                                            <!-- daily mail online  Collapse -->
+                                                                <div class="collapse" id="bundle">
+                                                                      <div class="bg-dark card card-body">
+                                                                        <div class="row">
+                                                                          <div class="col">
+                                                                              <p class="appheader display-4 text-info font-weight-bold">Daily Mail Online</p><p class="text-warning"></p>
+                                                                              <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                                                                              <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                                              <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result14)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                                              <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                                          </div>
+                                                                        <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/dailymailonline.jpg" alt="cnn"/></div></div>
+                                                                        <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/uk.png" alt="uk"/></div></div>
+                                                                        <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+
+                                                                <!-- das ding  Collapse -->
+                                                                    <div class="collapse" id="bundle">
+                                                                          <div class="bg-dark card card-body">
+                                                                            <div class="row">
+                                                                              <div class="col">
+                                                                                  <p class="appheader display-4 text-info font-weight-bold">DAS DING</p><p class="text-warning"></p>
+                                                                                  <p class="xf text-light">Category:<span class="text-warning"> Radio App</span></p>
+                                                                                  <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                                                  <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result15)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                                                  <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                                              </div>
+                                                                            <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/DASDING.jpg" alt="dasding"/></div></div>
+                                                                            <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="ger"/></div></div>
+
+
+
+                                                                            <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+
+                                                                    <!-- Der Westen online  Collapse -->
+                                                                        <div class="collapse" id="bundle">
+                                                                              <div class="bg-dark card card-body">
+                                                                                <div class="row">
+                                                                                  <div class="col">
+                                                                                      <p class="appheader display-4 text-info font-weight-bold">Der Westen</p><p class="text-warning"></p>
+                                                                                      <p class="xf text-light">Category:<span class="text-warning"> News App</span></p>
+                                                                                      <!--<p class="xf text-light">Country: <span class="text-warning">Germany</span></p>-->
+                                                                                      <p class="xf text-light">Notifications total: <?php while($row = mysqli_fetch_array($result16)){echo "<font color='#5cb85c'>".$row["number"]."</font>";} ?></p>
+                                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp enriched:</p>
+                                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp picture:</p>
+                                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video:</p>
+                                                                                      <p class="text-light">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp audio:</p>
+                                                                                  </div>
+                                                                                <div class="col-md-auto"><div class="text-center"><img class="card_logo" src="img/applogos/derwesten.jpg" alt="derwesten"/></div></div>
+                                                                                <div class="col col-lg-2"><div class="text-center"><img class="card_flag" src="img/countryflags/germany.png" alt="ger"/></div></div>
+                                                                                <!-- echo "<font color='#ffce00'>".$row["appName"]."</font>"; -->
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+
+
+
+
+
+</div> <!-- Title Column end -->
+
+
+</div> <!-- Main Row end -->
+
+
+<!-- ################### FOOTER ################### -->
+
+<div class="footer bg-dark">Copyright &#169; 2018. All Rights Reserved. |
+<a href="http://www.konsole-labs.com"><strong>konsole-labs.com</strong></a></div>
+
+
+
+<!-- END -->
+
+
+<!-- Optional JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/buttonactive.js"></script>
+<script type="text/javascript" src="js/sortTable.js"></script>
+<script type="text/javascript" src="js/chartscript/apps.js"></script>
+
+
+
+
+<!-- CHART:JS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+
+
+</body>
+</html>

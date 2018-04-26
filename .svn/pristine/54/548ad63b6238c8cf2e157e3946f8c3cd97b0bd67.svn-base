@@ -1,0 +1,241 @@
+<!-- ########## PHP - MYSQL einbinden ########## -->
+<!--
+<?php
+error_reporting(E_ALL);
+$connect = mysqli_connect("localhost", "root", "root", "notificationData");
+// Check connection
+if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+//echo "Connected successfully";
+$query = "SELECT appName, count(*) AS number FROM Notification GROUP BY appName ORDER BY `number` DESC";
+$result = mysqli_query($connect, $query);
+?>-->
+
+<!-- ########## HTML ########## -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>KPUSH.overview.2018</title>
+
+    <!-- CHART:JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+
+</head>
+
+<!-- ############# NAVBAR #############-->
+
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <a class="navbar-brand" href="index.html">
+      <div class="hover01 column">
+        <div>
+          <figure><img src="img/konsole_quad.png" width="56px" height="56px"/></figure>
+        </div>
+      </div>
+    </a>
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+<!-- ############# MAIN BODY #############-->
+
+    <div class="jumbotron jumbotron-fluid text-center" id="jumbotron">
+           <div class="container2">
+              <span class="maintitle">PUSH NOTIFICATION | </span><span class="maintitle2">STATISTICS</span>
+           </div>
+    </div>
+
+    <!-- ROW 1 -->
+
+    <div class="container1 text-center">
+      <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4"><br>
+            <span class="infotext1">MOST PUSHES</span><br><br>
+            <span class="infotext">Welche Apps pushen am meisten?</span>
+            <br><br><br>
+
+            <!-- +++++++++++ BUTTONS +++++++++++ -->
+              <div class="btn-group" role="group" aria-label="...">
+                <button type="button" id="0" class="button1">past 24h</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" id="1" class="button1">past week</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" id="2" class="button1">past month</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" id="3" class="button1">past year</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" id="4" class="button1">all time</button>
+              </div>
+
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"><br><br>
+
+            <div class="col"><br><br>
+                <!-- ### CHART ### -->
+                <canvas id="forecast" style="width: 60rem;"></canvas>
+            </div>
+
+          </div>
+          <div class="col"></div>
+        </div>
+
+      </div>
+
+<!-- ################### FOOTER ################### -->
+<div class="footer">Copyright &#169; 2018. All Rights Reserved. |
+<a href="http://www.konsole-labs.com"><strong>konsole-labs.com</strong></a></div>
+
+</body>
+
+<!-- ################# CHART.JS SCRIPT ################# -->
+
+
+<script type="text/javascript">
+
+/* +++++ CHART ++++++ */
+
+  // Label ausblenden
+ Chart.defaults.global.legend.display = false;
+ // Font colors
+ Chart.defaults.global.defaultFontColor = 'black';
+ /*// Werte hinter den Bars
+ Chart.pluginService.register({
+    afterDraw: function(chartInstance) {
+        var ctx = chartInstance.chart.ctx;
+
+        // render the value of the chart above the bar
+        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, '16px', Chart.defaults.global.defaultFontFamily);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+
+        chartInstance.data.datasets.forEach(function (dataset) {
+            for (var i = 0; i < dataset.data.length; i++) {
+                var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                ctx.fillText(dataset.data[i], model.x, model.y - 2);
+            }
+        });
+  }
+});*/
+
+var chart_labels = ['BILD', 'FOCUS', 'NY Times', 'The Sun', 'Wash. Post', 'BBC News'];
+var push_dataset = ['11', '9', '4', '2', '2', '1'];
+var ctx = document.getElementById("forecast").getContext('2d');
+var config = {
+    type: 'horizontalBar',
+    data: {
+        labels: chart_labels,
+        datasets: [{
+            label: "Pushes",
+            data: push_dataset,
+            backgroundColor: [
+                'rgba(243, 146, 0, 0.6)',
+                'rgba(243, 146, 0, 0.6)',
+                'rgba(243, 146, 0, 0.6)',
+                'rgba(243, 146, 0, 0.6)',
+                'rgba(243, 146, 0, 0.6)',
+                'rgba(243, 146, 0, 0.6)'
+            ]
+        }]
+    },
+    options: {
+      title: {
+            display: true,
+            text: '',
+            fontSize: 16
+        },
+        scales: {
+          xAxes: [{
+            ticks: {
+              // font styling
+                beginAtZero: true,
+                fontSize: 22
+              }
+          }],
+          yAxes: [{
+            ticks: {
+                fontSize: 18
+              }
+          }]
+      }
+  }
+};
+// past 24 hours
+var forecast_chart = new Chart(ctx, config);
+$("#0").click(function() {
+    var data = forecast_chart.config.data;
+    data.datasets[0].data = push_dataset;
+    data.labels = chart_labels;
+    forecast_chart.update();
+})
+// past week
+$("#1").click(function() {
+    var chart_labels = ['BILD', 'FOCUS', 'BBC News', 'The Sun', 'Wash. Post', 'NY Times'];
+    var push_dataset = ['78', '61', '54', '51', '43', '36'];
+    var data = forecast_chart.config.data;
+    data.datasets[0].data = push_dataset;
+    data.labels = chart_labels;
+    forecast_chart.update();
+})
+// past month
+$("#2").click(function() {
+    var chart_labels = ['BILD', 'FOCUS', 'NY Times', 'The Sun', 'Wash. Post', 'BBC News'];
+    var push_dataset = ['2445', '2325', '2268', '2232', '2121', '1879'];
+    var data = forecast_chart.config.data;
+    data.datasets[0].data = push_dataset;
+    data.labels = chart_labels;
+    forecast_chart.update();
+})
+// past year
+$("#3").click(function() {
+    var chart_labels = ['BBC News', 'FOCUS', 'BILD', 'NY Times', 'The Sun', 'Wash. Post'];
+    var push_dataset = ['23245', '21125', '17018', '15732', '12241', '10914'];
+    var data = forecast_chart.config.data;
+    data.datasets[0].data = push_dataset;
+    data.labels = chart_labels;
+    forecast_chart.update();
+})
+// all time
+$("#4").click(function() {
+    var chart_labels = ['BBC News', 'FOCUS', 'BILD', 'The Sun', 'Wash. Post', 'NY Times'];
+    var push_dataset = ['67245', '62425', '58118', '45232', '39241', '31314'];
+    var data = forecast_chart.config.data;
+    data.datasets[0].data = push_dataset;
+    data.labels = chart_labels;
+    forecast_chart.update();
+});
+
+// --------- PHP MYSQL CODE ----------
+
+/*< php
+while($row = mysqli_fetch_array($result))
+  {
+    echo "['".$row["appName"]."', ".$row["number"]."],";
+  } ?>*/
+</script>
+
+</html>

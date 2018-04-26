@@ -1,0 +1,134 @@
+/* +++++ CHART ++++++ */
+$(document).ready(function(){
+  $.ajax({
+		url: "php/corrections.php",
+		method: "GET",
+		success: function(data) {
+			     console.log(data);
+
+           Chart.defaults.global.legend.display = false;
+           // Font colors
+           Chart.defaults.global.defaultFontColor = '#000';
+
+           var chart_24h = [];
+           var push_24h = [];
+
+           for(var i in data) {
+             chart_24h.push(data[i].appName);
+             push_24h.push(data[i].number);
+           }
+
+          var ctx = document.getElementById("forecast").getContext('2d');
+          var config = {
+              type: 'horizontalBar',
+              data: {
+                  labels: chart_24h,
+                  datasets: [{
+                      label: "Pushes",
+                      data: push_24h,
+                      backgroundColor: [
+                        'rgba(255,99,132,0.2)',
+                        'rgba(255,159,64,0.2)',
+                        'rgba(255,205,86,0.2)',
+                        'rgba(75,192,192,0.2)',
+                        'rgba(54,162,235,0.2)',
+                        'rgba(153,102,155,0.2)',
+                        'rgba(201,203,207,0.2)',
+                        'rgba(0,128,128,0.2)',
+                        'rgba(255,0,255,0.2)',
+                        'rgba(147,119,96,0.2)'
+                      ],
+                      borderColor: [
+                        'rgb(255,99,132)',
+                        'rgb(255,159,64)',
+                        'rgb(255,205,86)',
+                        'rgb(75,192,192)',
+                        'rgb(54,162,235)',
+                        'rgb(153,102,155)',
+                        'rgb(201,203,207)',
+                        'rgb(0,128,128)',
+                        'rgb(255,0,255)',
+                        'rgb(147,119,96)'
+                      ],
+                      borderWidth: 1,
+                      hoverBorderWidth: 0
+                  }]
+              },
+              options: {
+                  title: {
+                        display: true,
+                        text: '',
+                        fontSize: 10
+                    },
+                    scales: {
+                      xAxes: [{
+                        ticks: {
+                          // font styling
+                            beginAtZero: true,
+                            //ZAHLEN
+                            fontSize: 16
+                          }
+                      }],
+                      yAxes: [{
+                        ticks: {
+                          //APPNAMEN usw.
+                            fontSize: 16
+                        }
+                    }]
+                }
+            }
+          };
+
+          var forecast_chart = new Chart(ctx, config);
+          $("#0").click(function() {
+            var data = forecast_chart.config.data;
+            data.datasets[0].data = push_24h;
+            data.labels = chart_24h;
+            forecast_chart.update();
+          })
+
+          var forecast_chart = new Chart(ctx, config);
+          $("#1").click(function() {
+            var chart_labels = [];
+            var push_dataset = [];
+            var data = forecast_chart.config.data;
+            data.datasets[0].data = pushlabels;
+            data.labels = chartlabels;
+            forecast_chart.update();
+          })
+
+          var forecast_chart = new Chart(ctx, config);
+          $("#2").click(function() {
+              var chart_labels = [];
+              var push_dataset = [];
+              var data = forecast_chart.config.data;
+              data.datasets[0].data = pushlabels;
+              data.labels = datalabels;
+              forecast_chart.update();
+            })
+
+          var forecast_chart = new Chart(ctx, config);
+          $("#3").click(function() {
+            var chart_labels = [];
+            var push_dataset = [];
+              var data = forecast_chart.config.data;
+              data.datasets[0].data = pushlabels;
+              data.labels = datalabels;
+              forecast_chart.update();
+          })
+
+          var forecast_chart = new Chart(ctx, config);
+          $("#4").click(function() {
+            var chart_labels = [];
+            var push_dataset = [];
+              var data = forecast_chart.config.data;
+              data.datasets[0].data = pushlabels;
+              data.labels = datalabels;
+              forecast_chart.update();
+          })
+        },
+        error: function(data) {
+          console.log(data);
+        }
+    });
+}); // documentready END
